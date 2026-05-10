@@ -1,0 +1,19 @@
+i. What happens when a user accesses /profile without logging in?
+
+	It checks the browser's active session, if it sees no valid authentication stamp then it instantly drops the request. It returns a 401 Unauthorized error and blocks access to the page which proves that the route is successfully protected from anonymous visitors.
+
+ii. What data is returned after successful login?
+
+	GitHub returns a JSON payload. It shows the public profile details like username, avatar, follower count and bio as well as specific data that the app requested permission to see like the email address which in my case, i showed in an organized UI.
+
+iii. Why is OAuth considered more secure than traditional login?
+
+	OAuth uses delegated authorization like instead of giving a third-party app our actual password, we log in directly through GitHub. GitHub then hands the app a temporary, limited-access pass or an access token. If the app misbehaves, we can easily revoke the pass without ever having to change the GitHub password.
+
+iv. What challenges did you encounter?
+
+	The biggest challenge was the strict nature of the Authorization Callback URL. I learned that OAuth providers are won't let you pass with wrong routing. A simple mistake like using 127.0.0.1 in the browser instead of localhost will completely break the authentication flow because GitHub sees them as two entirely different websites for security reasons.
+
+v. What did you learn from this activity?
+
+	I learned how modern web security actually works. Aside from writing code, I saw firsthand how Flask applications and third-party Identity Providers securely collaborate to authenticate a user and fetch API data without compromising user credentials.
