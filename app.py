@@ -10,15 +10,14 @@ oauth = OAuth(app)
 # Configure GitHub OAuth
 github = oauth.register(
     name='github',
-    client_id='Ov23limqt1g76ytQtapG',         # <-- Replace with your GitHub Client ID
-    client_secret='67c3d1dae0dca73aba526e212c4f8a873573f2dd', # <-- Replace with your GitHub Client Secret
+    client_id='Ov23limqt1g76ytQtapG',         
+    client_secret='67c3d1dae0dca73aba526e212c4f8a873573f2dd', 
     access_token_url='https://github.com/login/oauth/access_token',
     authorize_url='https://github.com/login/oauth/authorize',
     api_base_url='https://api.github.com/',
     client_kwargs={'scope': 'user:email'},
 )
 
-# --- iOS / iPHONE STYLING ---
 css_style = """
 <style>
     :root {
@@ -39,26 +38,22 @@ css_style = """
     }
     .iphone-container { width: 100%; max-width: 390px; padding: 20px; box-sizing: border-box; }
     
-    /* iOS Header Section */
     .profile-header { text-align: center; margin-bottom: 24px; }
     .avatar { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
     h1 { font-size: 28px; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
     .handle { color: var(--ios-subtext); font-size: 15px; margin-top: 4px; }
     .bio { font-size: 15px; margin: 12px 0; line-height: 1.4; padding: 0 10px; }
     
-    /* iOS Inset Grouped List (Like the Settings App) */
     .ios-list { background: var(--ios-card); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
     .ios-list-item { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 0.5px solid var(--ios-separator); font-size: 16px; }
     .ios-list-item:last-child { border-bottom: none; }
     .label { color: var(--ios-text); }
     .value { color: var(--ios-subtext); text-align: right; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     
-    /* iOS Stats Row */
     .stats-row { display: flex; justify-content: space-evenly; background: var(--ios-card); border-radius: 10px; padding: 16px 0; margin-bottom: 20px; text-align: center; }
     .stat-val { display: block; font-size: 17px; font-weight: 600; }
     .stat-label { font-size: 12px; color: var(--ios-subtext); margin-top: 4px; }
     
-    /* iOS Buttons */
     .btn { display: block; width: 100%; padding: 14px; border-radius: 14px; text-decoration: none; font-size: 17px; font-weight: 600; text-align: center; margin-bottom: 12px; box-sizing: border-box; cursor: pointer; border: none; }
     .btn-primary { background: #000000; color: #ffffff; }
     .btn-secondary { background: var(--ios-card); color: var(--ios-blue); }
