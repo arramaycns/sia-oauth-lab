@@ -143,12 +143,33 @@ def profile():
     </div>
     '''
 
-# BONUS CHALLENGE: Protected route
+# BONUS CHALLENGE: Protected route 
 @app.route('/api/secure-data')
 def secure_data():
     if 'user' not in session:
-        return jsonify({"error": "Unauthorized Access", "status": 401}), 401
-    return jsonify({"message": "This is highly secure data!", "status": "success"})
+        return f'''
+        {css_style}
+        <div class="iphone-container" style="text-align: center;">
+            <h1 style="color: var(--ios-red); margin-bottom: 8px;">Access Denied</h1>
+            <p style="color: var(--ios-subtext); margin-bottom: 32px;">You must be signed in to access the secure API vault.</p>
+            <a href="/login" class="btn btn-primary">Go to Sign In</a>
+        </div>
+        ''', 401
+
+    return f'''
+    {css_style}
+    <div class="iphone-container" style="text-align: center;">
+        <div style="background: var(--ios-card); border-radius: 14px; padding: 40px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 24px;">
+            <div style="font-size: 50px; margin-bottom: 16px;">🔒</div>
+            <h2 style="margin: 0 0 8px 0; font-size: 22px;">Secure Vault</h2>
+            <p style="color: var(--ios-subtext); margin: 0; line-height: 1.5;">
+                <strong style="color: #34c759;">Status: Success</strong><br>
+                "This is highly secure data!"
+            </p>
+        </div>
+        <a href="/profile" class="btn btn-secondary">Return to Profile</a>
+    </div>
+    '''
 
 # 5. LOGOUT RESULT
 @app.route('/logout')
